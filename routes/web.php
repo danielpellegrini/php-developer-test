@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("users", "ApiHandlerController@getUsers");
+
 Route::get('/', function () {
     return view('welcome');
 });
