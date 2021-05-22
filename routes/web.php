@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("users", "ApiHandlerController@getUsers");
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.homepage');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin/dashboard', 'Admin\AdminController@index');
+Route::view('/admin/dashboard', 'admin.user');
+
