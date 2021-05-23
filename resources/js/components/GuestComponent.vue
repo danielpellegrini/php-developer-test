@@ -103,7 +103,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="country" name="default" v-model="fields.country">
                                         <option value="default" selected disabled>Select a Country</option>
-                                        <option v-for="country in countries"
+                                        <option v-for="country in countries" :key="country"
                                                 :value="country.name">{{ country.name }}
                                         </option>
                                     </select>
@@ -232,7 +232,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" id="country" name="default" v-model="fields.country">
                                         <option value="default" selected disabled>Select a Country</option>
-                                        <option v-for="country in countries"
+                                        <option v-for="country in countries" :key="country"
                                                 :value="country.name">{{ country.name }}
                                         </option>
                                     </select>
@@ -315,7 +315,7 @@ export default {
             // once the form it has been submitted, the page will reload
             setTimeout(function () {
                 send = location.reload();
-            }, 4000);
+            }, 8000);
 
         },
 

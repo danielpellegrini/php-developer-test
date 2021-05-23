@@ -38534,7 +38534,10 @@ var render = function() {
                           _vm._l(_vm.countries, function(country) {
                             return _c(
                               "option",
-                              { domProps: { value: country.name } },
+                              {
+                                key: country,
+                                domProps: { value: country.name }
+                              },
                               [
                                 _vm._v(
                                   _vm._s(country.name) +
@@ -39126,7 +39129,10 @@ var render = function() {
                           _vm._l(_vm.countries, function(country) {
                             return _c(
                               "option",
-                              { domProps: { value: country.name } },
+                              {
+                                key: country,
+                                domProps: { value: country.name }
+                              },
                               [
                                 _vm._v(
                                   _vm._s(country.name) +
