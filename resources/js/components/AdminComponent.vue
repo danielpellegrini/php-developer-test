@@ -1,18 +1,44 @@
 <template>
     <div class="container" :class="{'loading':loading}">
         <div class="row justify-content-center" :class="{'d-none':loading}">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" >Admin Dashboard</div>
 
                     <!-- CONTENT -->
-                        <span class="list-group-item" v-for="user in users">
-                            Name: <a class="text-decoration-none d-block">{{ user.name }}</a>
-                            City: <a class="text-decoration-none d-block">{{ user.address.city }}</a>
-                        </span>
+                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            <th class="th-sm">First Name
+                            </th>
+                            <th class="th-sm">Last Name
+                            </th>
+                            <th class="th-sm">Username
+                            </th>
+                            <th class="th-sm">Email address
+                            </th>
+                            <th class="th-sm">User address
+                            </th>
+                            <th class="th-sm">Company
+                            </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                                <td>2011/04/25</td>
+                                <td>$320,800</td>
+                            </tr>                            
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
 
                     <!-- /CONTENT -->
-
                 </div>
             </div>
         </div>
@@ -34,8 +60,6 @@ export default {
         this.loadUsers();
         this.loadAddresses();
         this.loadCompanies();
-
-
     },
 
     methods: {

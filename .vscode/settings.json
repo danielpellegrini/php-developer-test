@@ -1,0 +1,6 @@
+{
+    "workbench.preferredDarkColorTheme": "Dark+ Material",
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "Monokai Dimmed",
+    "terminal.integrated.sendKeybindingsToShell": true
+}

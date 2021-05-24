@@ -4,11 +4,18 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue from 'vue'
+
+
 // form wizard
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-
 Vue.use(VueFormWizard)
+
+// vuelidate
+import Vuelidate from 'vuelidate'
+import"vuelidate/dist/vuelidate.min.js";
+Vue.use(Vuelidate)
+
 window.Vue = Vue;
 require('./bootstrap');
 
@@ -35,4 +42,6 @@ Vue.component('guest-component', require('./components/GuestComponent.vue').defa
 
 const app = new Vue({
     el: '#app',
+    // components: { GuestComponent },
+    // template: "<App/>"
 });
