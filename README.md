@@ -12,6 +12,10 @@ then create the .env file from .env.example
 
     cp .env.example .env
 
+Link your database and run
+
+    php artisan migrate:fresh --seed
+
 then generate the Laravel Application key
 
     php artisan key:generate
