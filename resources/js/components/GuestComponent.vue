@@ -336,7 +336,7 @@
                 // once the form it has been submitted, the page will reload
                 setTimeout(function () {
                     send = location.reload();
-                }, 8000);
+                }, 3000);
             },
             validate() {
                 this.$v.form.$touch();

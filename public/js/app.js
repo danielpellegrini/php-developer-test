@@ -1892,19 +1892,99 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       users: [],
-      addresses: [],
-      companies: [],
-      loading: true
+      loading: true,
+      currentSort: 'name',
+      currentSortDir: 'asc'
     };
   },
   mounted: function mounted() {
     this.loadUsers();
-    this.loadAddresses();
-    this.loadCompanies();
   },
   methods: {
     loadUsers: function loadUsers() {
@@ -1913,12 +1993,30 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('https://jsonplaceholder.typicode.com/users').then(function (resp) {
         _this.users = resp.data;
         _this.loading = false;
-      })["catch"](function (error) {
-        alert(error);
+      })["catch"](function (e) {
+        alert(error(e));
       });
     },
-    loadAddresses: function loadAddresses() {},
-    loadCompanies: function loadCompanies() {}
+    sort: function sort(s) {
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      }
+
+      this.currentSort = s;
+    }
+  },
+  computed: {
+    sorted: function sorted() {
+      var _this2 = this;
+
+      return this.users.sort(function (a, b) {
+        var modifier = 1;
+        if (_this2.currentSortDir === 'desc') modifier = -1;
+        if (a[_this2.currentSort] < b[_this2.currentSort]) return -1 * modifier;
+        if (a[_this2.currentSort] > b[_this2.currentSort]) return 1 * modifier;
+        return 0;
+      });
+    }
   }
 });
 
@@ -2284,7 +2382,7 @@ var emailRegexValidator = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.
 
       setTimeout(function () {
         send = location.reload();
-      }, 8000);
+      }, 3000);
     },
     validate: function validate() {
       this.$v.form.$touch();
@@ -38075,7 +38173,351 @@ var render = function() {
           staticClass: "row justify-content-center",
           class: { "d-none": _vm.loading }
         },
-        [_vm._m(0)]
+        [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("Admin Dashboard")
+              ]),
+              _vm._v(" "),
+              _c(
+                "table",
+                {
+                  staticClass: "table table-responsive table-hover ",
+                  attrs: {
+                    id: "dtBasicExample",
+                    cellspacing: "0",
+                    width: "100%"
+                  }
+                },
+                [
+                  _c("thead", [
+                    _c("tr", [
+                      _c(
+                        "th",
+                        {
+                          staticClass: "th-sm sorting",
+                          on: {
+                            click: function($event) {
+                              return _vm.sort("name")
+                            }
+                          }
+                        },
+                        [_vm._v("First Name\n                            ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "th",
+                        {
+                          staticClass: "th-sm sorting",
+                          on: {
+                            click: function($event) {
+                              return _vm.sort("name")
+                            }
+                          }
+                        },
+                        [_vm._v("Last Name\n\n                            ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "th",
+                        {
+                          staticClass: "th-sm sorting",
+                          on: {
+                            click: function($event) {
+                              return _vm.sort("username")
+                            }
+                          }
+                        },
+                        [_vm._v("Username\n                            ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "th",
+                        {
+                          staticClass: "th-sm sorting",
+                          on: {
+                            click: function($event) {
+                              return _vm.sort("email")
+                            }
+                          }
+                        },
+                        [_vm._v("Email address\n                            ")]
+                      ),
+                      _vm._v(" "),
+                      _c("th", { staticClass: "th-sm" }, [
+                        _vm._v("User address\n                            ")
+                      ]),
+                      _vm._v(" "),
+                      _c("th", { staticClass: "th-sm" }, [
+                        _vm._v("Company\n                            ")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.sorted, function(user, index) {
+                      return _c(
+                        "tr",
+                        {
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#userSelected" + user.id
+                          }
+                        },
+                        [
+                          _c("td", { staticClass: "align-middle" }, [
+                            _vm._v(
+                              _vm._s(
+                                user.name
+                                  .split(" ")
+                                  .splice(0, 1)
+                                  .join()
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "align-middle" }, [
+                            _vm._v(
+                              _vm._s(
+                                user.name
+                                  .split(" ")
+                                  .splice(1, 1 + 2)
+                                  .join(" ")
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "align-middle" }, [
+                            _vm._v(_vm._s(user.username))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "align-middle" }, [
+                            _vm._v(_vm._s(user.email))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "align-middle" }, [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(user.address.city)
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(user.address.street)
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(user.address.zipcode) +
+                                "\n                            "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "align-middle" }, [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(user.company.name)
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(user.company.catchPhrase) +
+                                "\n                            "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "userSelected" + user.id,
+                                tabindex: "-1",
+                                role: "dialog",
+                                "aria-labelledby": "exampleModalCenterTitle",
+                                "aria-hidden": "true"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                  attrs: { role: "document" }
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(0, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c(
+                                        "table",
+                                        { staticClass: "table table-bordered" },
+                                        [
+                                          _c("tbody", [
+                                            _vm._m(1, true),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Name")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(user.name))
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Username")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(user.username))
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Email")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(user.email))
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _vm._m(2, true),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("City")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(
+                                                  _vm._s(user.address.city)
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Street")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(
+                                                  _vm._s(user.address.street)
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Zip code")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(
+                                                  _vm._s(user.address.zipcode)
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _vm._m(3, true),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Company name")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(
+                                                  _vm._s(user.company.name)
+                                                )
+                                              ])
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "th",
+                                                {
+                                                  staticClass: "bold",
+                                                  attrs: { scope: "row" }
+                                                },
+                                                [_vm._v("Description")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    user.company.catchPhrase
+                                                  )
+                                                )
+                                              ])
+                                            ])
+                                          ])
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(4, true)
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("tfoot")
+                ]
+              )
+            ])
+          ])
+        ]
       )
     ]
   )
@@ -38085,65 +38527,67 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("Admin Dashboard")]),
-        _vm._v(" "),
-        _c(
-          "table",
-          {
-            staticClass: "table table-striped table-bordered table-sm",
-            attrs: { id: "dtBasicExample", cellspacing: "0", width: "100%" }
-          },
-          [
-            _c("thead", [
-              _c("tr", [
-                _c("th", { staticClass: "th-sm" }, [
-                  _vm._v("First Name\n                        ")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "th-sm" }, [
-                  _vm._v("Last Name\n                        ")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "th-sm" }, [
-                  _vm._v("Username\n                        ")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "th-sm" }, [
-                  _vm._v("Email address\n                        ")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "th-sm" }, [
-                  _vm._v("User address\n                        ")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "th-sm" }, [
-                  _vm._v("Company\n                        ")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_vm._v("Tiger Nixon")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("System Architect")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("Edinburgh")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("61")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2011/04/25")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$320,800")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tfoot")
-          ]
-        )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticClass: "text-center t-head", attrs: { colspan: "2" } }, [
+        _c("i", { staticClass: "fas fa-user" }),
+        _vm._v(" User details")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticClass: "text-center t-head", attrs: { colspan: "2" } }, [
+        _c("i", { staticClass: "fas fa-envelope" }),
+        _vm._v(" Address")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticClass: "text-center t-head", attrs: { colspan: "2" } }, [
+        _c("i", { staticClass: "fas fa-building" }),
+        _vm._v(" Company")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
     ])
   }
 ]

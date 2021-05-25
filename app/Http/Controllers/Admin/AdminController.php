@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AddressResource;
-use App\Http\Resources\CompanyResource;
-use App\Models\Address;
 use App\Models\Company;
+use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,16 +17,19 @@ class AdminController extends Controller
      */
     public function index()
     {
-//        $addresses = AddressResource::collection(Address::all());
-//        $companies = CompanyResource::collection(Company::all());
-//        return AddressResource::collection(Address::all());
+        // return view('admin.user');
+        // QUERIES
+        $users = User::all();
+        $companies = Company::all();
 
-//        return view('admin.user', compact('addresses','companies'));
+        $user = User::find(1);
+        $company = Company::find(1);
+
+        
+        return view('admin.query', compact('users', 'companies','user','company'));
+
     }
 
-    public function admin() {
-//        return view('admin.user');
-    }
 
     /**
      * Show the form for creating a new resource.

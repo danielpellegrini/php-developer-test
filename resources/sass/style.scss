@@ -2,6 +2,20 @@
 @import '_register';
 
 
+.sorting {
+    cursor: pointer;
+}
+
+.t-head {
+    background-color: #3498db;
+    color: #fff;
+}
+.bold {
+    font-style: italic;
+    color:#3498db
+}
+
+
 .loading {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */

@@ -10069,6 +10069,20 @@ h3 {
   color: red;
 }
 
+.sorting {
+  cursor: pointer;
+}
+
+.t-head {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.bold {
+  font-style: italic;
+  color: #3498db;
+}
+
 .loading {
   border: 16px solid #f3f3f3;
   /* Light grey */

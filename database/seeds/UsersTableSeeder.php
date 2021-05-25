@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Address;
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,6 +14,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\User::class, 25)->create();
+         factory(User::class, 25)->create()->each(function ($user) {
+            $user->companies()->attach(factory(Company::class)->create()->id);
+            $user->addresses()->attach(factory(Address::class)->create()->id);
+        });        
+
     }
 }
