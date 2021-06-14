@@ -38267,7 +38267,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("td", { staticClass: "align-middle" }, [
+                          _c("td", { staticClass: "align-middle pointer" }, [
                             _vm._v(
                               _vm._s(
                                 user.name

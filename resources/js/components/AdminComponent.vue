@@ -35,7 +35,7 @@
                         <tbody>
 
                             <tr v-for="(user, index) in sorted" data-toggle="modal" :data-target="'#userSelected' + user.id" >
-                                <td class="align-middle" >{{ user.name.split(' ').splice(0, 1).join() }}</td>
+                                <td class="align-middle pointer">{{ user.name.split(' ').splice(0, 1).join() }}</td>
                                 <td class="align-middle">{{ user.name.split(' ').splice(1, 1+2).join(' ') }}</td>
                                 <td class="align-middle">{{ user.username }}</td>
                                 <td class="align-middle">{{ user.email }}</td>
